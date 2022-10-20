@@ -1,23 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
 
+// import Button from '@mui/material/Button'
+// import the component we want and use it - check documentation for what's available
+
+import React, {useState, useEffect} from 'react';
+import Container from '@mui/material/Container';
+import Header from './Header';
+import Card from './Card';
+
+
 function App() {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products`)
+    .then((resp) => {
+      return resp.json();
+    })
+    .then((data) => {
+      return setData(data);
+    })
+    .catch(err => console.log(err));
+  }, [])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Header />
+        <Card data={data} />
+
+      </Container>
+      
     </div>
   );
 }
