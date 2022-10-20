@@ -5,13 +5,13 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 
-function Card( {data} ) {
+function Woman( {data} ) {
   if(data.length === 0) { // .length can only check the length of an empty array; so when setting the state variable it must be empty array
     return null // return nothing if no data
   } else {
 
     let result = data.filter((object)=>{
-      return object.category === "men's clothing"
+      return object.category === "women's clothing"
     })
 
     return (
@@ -33,4 +33,4 @@ function Card( {data} ) {
 
 }
 
-export default Card;
+export default Woman;
